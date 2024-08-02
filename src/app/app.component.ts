@@ -26,8 +26,4 @@ export class AppComponent implements OnInit {
       this.newScoreValue = 0;
     }
   }
-
-  navigateTo(route: string): void {
-    this.router.navigate([route]);
-  }
 }
