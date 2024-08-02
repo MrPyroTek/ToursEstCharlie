@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LeaderboardService } from './leaderboard.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
   newScoreName: string = '';
   newScoreValue: number = 0;
 
-  constructor(private leaderboardService: LeaderboardService) {}
+  constructor(private leaderboardService: LeaderboardService, private router: Router) {}
 
   ngOnInit(): void {
     this.leaderboard$ = this.leaderboardService.getLeaderboard();
@@ -24,5 +25,9 @@ export class AppComponent implements OnInit {
       this.newScoreName = '';
       this.newScoreValue = 0;
     }
+  }
+
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
   }
 }

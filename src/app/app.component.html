@@ -1,2 +1,11 @@
 
 <router-outlet></router-outlet>
+
+<div class="navigation-buttons">
+  <button (click)="navigateTo('')">Home</button>
+  <button (click)="navigateTo('login')">Login</button>
+  <button (click)="navigateTo('user')">User Profile</button>
+  <button (click)="navigateTo('admin/trophies')">Admin Trophies</button>
+  <button (click)="navigateTo('player/trophies')">Player Trophies</button>
+  <button (click)="navigateTo('leaderboard')">Leaderboard</button>
+</div>

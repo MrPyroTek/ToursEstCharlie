@@ -32,7 +32,8 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "/ToursEstCharlie/"
           },
           "configurations": {
             "production": {
@@ -48,7 +49,8 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/ToursEstCharlie/"
             },
             "development": {
               "buildOptimizer": false,
@@ -60,7 +62,7 @@
             }
           },
           "defaultConfiguration": "production"
-        },
+        },        
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
