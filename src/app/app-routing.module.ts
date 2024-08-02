@@ -12,7 +12,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { path: 'user', component: UserComponent, resolve: { data: UserResolver } },
   { path: 'admin/trophies', component: TrophyComponent, canActivate: [AuthGuard] },
   { path: 'player/trophies', component: UserTrophiesComponent, canActivate: [AuthGuard] },
@@ -26,3 +26,4 @@ const routes: Routes = [
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
 export class AppRoutingModule { }
+
