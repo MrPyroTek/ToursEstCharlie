@@ -32,3 +32,4 @@ git push origin --delete gh-pages
 
 ng build --configuration production --base-href "https://MrPyroTek.github.io/ToursEstCharlie/"
 
+npx angular-cli-ghpages --dir=dist/tours-est-charlie
