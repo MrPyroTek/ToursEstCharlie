@@ -9,20 +9,27 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    public afAuth: AngularFireAuth,
-    public userService: UserService,
+    private afAuth: AngularFireAuth,
+    private userService: UserService,
     private router: Router
   ) {}
 
   canActivate(): Promise<boolean> {
     return new Promise((resolve) => {
-      this.userService.getCurrentUser()
-        .then(user => {
-          // Redirect if user is already logged in
-          this.router.navigate(['/user']);
+      this.afAuth.authState.subscribe(user => {
+        if (user) {
+          // User is logged in, canActivate returns true unless you want specific logic here
+          resolve(true);
+        } else {
+          // No user logged in, redirect to login page
+          this.router.navigate(['/login']);
           resolve(false);
-        })
-        .catch(() => resolve(true)); // Allow access if no user is logged in
+        }
+      }, error => {
+        console.error('Check login error:', error);
+        this.router.navigate(['/login']);
+        resolve(false);
+      });
     });
   }
 }

@@ -15,7 +15,11 @@ import { UserService } from './core/user.service'; // Adjust path as needed
 import { UserComponent } from './user/user.component';
 import { UserResolver } from './user/user.resolver';
 import { AppRoutingModule } from './app-routing.module';
-
+import { FormsModule } from '@angular/forms';
+import { TrophyComponent } from './trophy/trophy.component';
+import { UserTrophiesComponent } from './user-trophy/user-trophy.component';
+import { CommonModule } from '@angular/common';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
@@ -25,7 +29,10 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    TrophyComponent,
+    UserTrophiesComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,9 @@ const routes: Routes = [
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule,
+    CommonModule
   ],
   providers: [
     AuthGuard, // Make sure AuthGuard is included here

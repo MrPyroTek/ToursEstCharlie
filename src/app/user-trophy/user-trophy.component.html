@@ -1,0 +1,11 @@
+<ul>
+    <li *ngFor="let trophy of trophies$">
+      {{ trophy.key }} - <button (click)="unlockTrophy(trophy.key)">Unlock</button>
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let trophy of trophiesObtained">
+      {{ trophy }}
+    </li>
+  </ul>
