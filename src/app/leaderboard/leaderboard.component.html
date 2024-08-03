@@ -1,5 +1,23 @@
-  <ul>
-    <li *ngFor="let entry of leaderboard$">
-      {{ entry.userId }}-{{ entry.trophyCount }}:
-    </li>
-  </ul>
+<mat-card class="container titletop stripe-border">
+  <h1 class="header title">Leaderboard</h1>
+</mat-card>
+
+<div class="container titletop stripe-border main-card">
+  <mat-card class="leaderboard-card col-md-4">
+    <ul>
+      <li *ngFor="let entry of leaderboard$ | async" class="lineOfLeaderboard">
+        <img [src]="entry.image" alt="{{ entry.name }}" class="user-image"/>
+        <strong>{{ entry.name }}</strong> - {{ entry.trophyCount }} trophies
+      </li>
+    </ul>
+  </mat-card>
+  <mat-card class="container col-md-8">
+    <ul>
+      <li *ngFor="let entry of leaderboard$ | async" class="lineOfLeaderboard">
+        <img [src]="entry.image" alt="{{ entry.name }}" class="user-image"/>
+        <strong>{{ entry.name }}</strong> - {{ entry.trophyCount }} trophies
+      </li>
+    </ul>
+  </mat-card>
+
+</div>

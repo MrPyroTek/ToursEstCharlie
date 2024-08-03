@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TrophyService } from '../trophy.service';
-import { Trophy } from '../trophy.service';  // Import Trophy interface
+import { Trophy } from '../model/trophy.models';
 
 @Component({
   selector: 'app-trophy',

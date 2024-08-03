@@ -1,36 +1,14 @@
-<h1 class="header">Login with Firebase or Social Providers</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <form [formGroup]="loginForm" (ngSubmit)="tryLogin()">
-        <div class="form-group">
-          <label>Email address</label>
-          <input type="email" formControlName="email" class="form-control" />
+
+        <mat-card class="container titletop stripe-border">
+          <h1 class="header title">Login</h1>
+        </mat-card>
+        
+        <div class="container titletop stripe-border main-card">
+          <mat-card class="leaderboard-card col-md-4">
+            <button type="button" class="btn btn-danger btn-block" (click)="tryGoogleLogin()">Login with Google</button>
+          </mat-card>
+          <mat-card class="container col-md-8">
+          </mat-card>
+        
         </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" formControlName="password" class="form-control" />
-          <label class="error">{{ errorMessage }}</label>
-        </div>
-        <button type="submit" class="btn btn-default">Login</button>
-      </form>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <button type="button" class="btn btn-primary btn-block" (click)="tryFacebookLogin()">Login with Facebook</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <button type="button" class="btn btn-danger btn-block" (click)="tryGoogleLogin()">Login with Google</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <button type="button" class="btn btn-info btn-block" (click)="tryTwitterLogin()">Login with Twitter</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <p>No account yet? <a routerLink="/register">Create a
+        

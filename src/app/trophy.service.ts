@@ -2,12 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-
-export interface Trophy {
-  key: string;
-  name: string;
-  description?: string;
-}
+import { Trophy } from './model/trophy.models';
+import { FirebaseUserModel } from './model/user.model';
 
 interface UserData {
   trophies: { [key: string]: boolean };
@@ -36,26 +32,34 @@ export class TrophyService {
   }
 
    // Fetch users from Firebase
-   getAllUsers(): Observable<FirebaseUser[]> {
-    return this.db.list<UserData>('users').snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => ({
-          key: c.payload.key as string,  // Firebase key is treated as a string
-          data: c.payload.val() as UserData // Ensure the value matches UserData
-        }))
-      )
-    );
-  }
+// trophy.service.ts
+getAllUsers(): Observable<FirebaseUserModel[]> {
+  return this.db.list<FirebaseUserModel>('users').snapshotChanges().pipe(
+    map(changes =>
+      changes.map(c => {
+        const userData = c.payload.val() as FirebaseUserModel;
+        return {
+          key: c.payload.key as string,
+          ...userData
+        };
+      })
+    )
+  );
+}
 
-  // Generate leaderboard
-  generateLeaderboard(): Observable<{ userId: string, trophyCount: number }[]> {
-    return this.getAllUsers().pipe(
-      map(users => users.map(user => {
-        const trophyCount = user.data.trophies ? Object.keys(user.data.trophies).length : 0;
-        return { userId: user.key, trophyCount };
-      }).sort((a, b) => b.trophyCount - a.trophyCount))  // Sort descending by trophy count
-    );
-  }
+
+
+// trophy.service.ts
+generateLeaderboard(): Observable<{ name: string; image: string; trophyCount: number }[]> {
+  return this.getAllUsers().pipe(
+    map(users => users.map(user => {
+      const trophyCount = user.trophies ? Object.keys(user.trophies).length : 0;
+      return { name: user.name, image: user.image, trophyCount };  // Ensure key is not null
+    }).sort((a, b) => b.trophyCount - a.trophyCount))  // Sort descending by trophy count
+  );
+}
+
+
 
     // Fetch all trophies for a specific user
   getUserTrophies(userId: string) {

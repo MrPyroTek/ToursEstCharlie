@@ -8,14 +8,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['leaderboard.component.scss']
 })
 export class LeaderboardComponent implements OnInit {
-  leaderboard$: { userId: string; trophyCount: number; }[];
+  leaderboard$: Observable<{ name: string; image: string; trophyCount: number }[]>;
 
   constructor(private trophyService: TrophyService) {}
 
   ngOnInit() {
-     this.trophyService.generateLeaderboard().subscribe(data => {
-      this.leaderboard$ = data
-      console.log(data)
-    });
+    this.leaderboard$ = this.trophyService.generateLeaderboard();
   }
 }

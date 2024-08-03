@@ -6,7 +6,7 @@ En cours de dev
 
 -- Prochainement --
 
-App de generation de QR code "ou est charlie" et creation d'un leaderboard de qui trouve le plus charlie a TOURS.
+App de generation de QR code "ou est charlie" et creation d'un leaderboard de qui trouve le plus charlie a TOURS.git 
 
 
 ## Build
@@ -16,7 +16,7 @@ bdd hoster sur firebase
 
 git checkout master
 
-git push origin --delete gh-pages
+git branch -d old-branch.
 
 ng build --configuration production --base-href "https://MrPyroTek.github.io/ToursEstCharlie/"
 

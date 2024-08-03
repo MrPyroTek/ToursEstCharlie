@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Trophy, TrophyService } from '../trophy.service';
+import { TrophyService } from '../trophy.service';
 import { Observable, catchError, switchMap, tap, throwError } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Trophy } from '../model/trophy.models';
 
 @Component({
   selector: 'app-user-trophies',

@@ -20,6 +20,14 @@ import { TrophyComponent } from './trophy/trophy.component';
 import { UserTrophiesComponent } from './user-trophy/user-trophy.component';
 import { CommonModule } from '@angular/common';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from "./header/header.component";
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+
 const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
@@ -32,7 +40,8 @@ const routes: Routes = [
     UserComponent,
     TrophyComponent,
     UserTrophiesComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +53,14 @@ const routes: Routes = [
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     FormsModule,
-    CommonModule
-  ],
+    CommonModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule
+],
   providers: [
     AuthGuard, // Make sure AuthGuard is included here
     UserService,

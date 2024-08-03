@@ -1,36 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, Router } from "@angular/router";
+import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { UserService } from '../core/user.service';
-import { FirebaseUserModel } from '../core/user.model';
+import { FirebaseUserModel } from '../model/user.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserResolver implements Resolve<FirebaseUserModel> {
 
-  constructor(public userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
-  resolve(route: ActivatedRouteSnapshot) : Promise<FirebaseUserModel> {
+  async resolve(route: ActivatedRouteSnapshot): Promise<FirebaseUserModel> {
+    try {
+      const user = await this.userService.getCurrentUser();
 
-    let user = new FirebaseUserModel();
+      // Ensure providerData and its first item exist
+      const providerId = user.provider || '';
+      const isPasswordProvider = providerId === 'password';
 
-    return new Promise((resolve, reject) => {
-      this.userService.getCurrentUser()
-      .then(res => {
-        if(res.providerData[0].providerId == 'password'){
-          user.image = 'https://via.placeholder.com/400x300';
-          user.name = res.displayName;
-          user.provider = res.providerData[0].providerId;
-          return resolve(user);
-        }
-        else{
-          user.image = res.photoURL;
-          user.name = res.displayName;
-          user.provider = res.providerData[0].providerId;
-          return resolve(user);
-        }
-      }, err => {
-        this.router.navigate(['/login']);
-        return reject(err);
-      })
-    })
+      // Set default image if the provider is 'password'
+      if (isPasswordProvider) {
+        user.image = 'https://via.placeholder.com/400x300';
+      }
+
+      return user;
+    } catch (err) {
+      console.error('Error resolving user:', err);
+      this.router.navigate(['/login']);
+      throw err; // Reject the promise if there's an error
+    }
   }
 }

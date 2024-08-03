@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { LeaderboardService } from './leaderboard.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -9,13 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
   leaderboard$: Observable<any[]>;
   newScoreName: string = '';
   newScoreValue: number = 0;
 
-  constructor(private leaderboardService: LeaderboardService, private router: Router) {}
 
-  ngOnInit(): void {
+  constructor(
+    private leaderboardService: LeaderboardService,
+    private router: Router
+  ) {}
+
+  async ngOnInit(): Promise<void> {
     this.leaderboard$ = this.leaderboardService.getLeaderboard();
   }
 
