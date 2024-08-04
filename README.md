@@ -16,7 +16,7 @@ bdd hoster sur firebase
 
 git checkout master
 
-git branch -d old-branch.
+git branch -d gh-page.
 
 ng build --configuration production --base-href "https://MrPyroTek.github.io/ToursEstCharlie/"
 

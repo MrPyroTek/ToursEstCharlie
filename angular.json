@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/ToursEstCharlie/",
             "outputPath": "dist/tours-est-charlie",
             "main": "src/main.ts",
             "index": "src/index.html",
@@ -31,13 +32,13 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "baseHref": "/"
+            "scripts": []
           },
           "configurations": {
             "production": {
               "outputHashing": "all",
               "optimization": true,
+              "baseHref": "/ToursEstCharlie/",
               "sourceMap": false,
               "namedChunks": false,
               "aot": true,
@@ -53,14 +54,6 @@
                   "maximumError": "4kb"
                 }
               ]
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true,
-              "aot": false
             }
           },
           "defaultConfiguration": "production"
@@ -72,7 +65,8 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "ToursEstCharlie:build:production"
+              "buildTarget": "ToursEstCharlie:build:production",
+              "baseHref": "/ToursEstCharlie/"
             },
             "development": {
               "buildTarget": "ToursEstCharlie:build:development"

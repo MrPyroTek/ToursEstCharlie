@@ -1,0 +1,1 @@
+body{min-height:98vh;margin:0;background-color:#52dcff}.stripe-border{position:relative;padding:20px;background:#fff!important}.stripe-border:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;z-index:-999999;background:repeating-linear-gradient(45deg,red,red 10px,#fff 10px 20px);border:5px solid transparent;margin:-5px;box-sizing:content-box}
