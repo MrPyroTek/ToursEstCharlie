@@ -24,11 +24,6 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets/logo.png",
-              "src/assets"
-            ],
             "styles": [
               "src/styles.scss"
             ],
@@ -53,6 +48,20 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
+              ],
+              "assets": [
+                "src/assets"
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "aot": false,
+              "assets": [
+                "src/assets"
               ]
             }
           },
@@ -65,8 +74,7 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "ToursEstCharlie:build:production",
-              "baseHref": "/ToursEstCharlie/"
+              "buildTarget": "ToursEstCharlie:build:production"
             },
             "development": {
               "buildTarget": "ToursEstCharlie:build:development"
