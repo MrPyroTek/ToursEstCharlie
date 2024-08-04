@@ -6,6 +6,8 @@ https://mrpyrotek.github.io/ToursEstCharlie/
 
 En cours de dev 
 
+Trello de dev: https://trello.com/b/4GR7Xm2P/toursestcharlie
+
 -- Prochainement --
 
 App de generation de QR code "ou est charlie" et creation d'un leaderboard de qui trouve le plus charlie a TOURS.git 
