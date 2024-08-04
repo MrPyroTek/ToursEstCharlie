@@ -1,6 +1,8 @@
 # ToursEstCharlie
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6. + gh-pages
+
+https://mrpyrotek.github.io/ToursEstCharlie/
 
 En cours de dev 
 
@@ -16,7 +18,8 @@ bdd hoster sur firebase
 
 git checkout master
 
-git branch -d gh-page.
+git push origin --delete gh-pages
+
 
 ng build --configuration production --base-href "https://MrPyroTek.github.io/ToursEstCharlie/"
 
